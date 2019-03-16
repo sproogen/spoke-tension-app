@@ -20,9 +20,9 @@ branches:
 
 before_install:
   - git fetch origin +refs/heads/*:refs/remotes/origin/*
-  - git fetch --unshallow
+  - ./scripts/update-sonar-version.sh
 
 script:
   - npm test -- --coverage --ci
   - npm run build
-  - ./scripts/update-sonar-version.sh && sonar-scanner
+  - sonar-scanner
