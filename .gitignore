@@ -6,3 +6,5 @@ public/*
 logs
 *.log
 npm-debug.log*
+
+coverage
