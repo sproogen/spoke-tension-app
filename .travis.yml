@@ -5,6 +5,10 @@ language: node_js
 node_js:
   - "stable"
 
+addons:
+  sonarcloud:
+    organization: "sproogen-github"
+
 cache:
   directories:
     - node_modules
@@ -14,5 +18,11 @@ branches:
     - master
     - develop
 
+before_install:
+  - git fetch origin +refs/heads/*:refs/remotes/origin/*
+  - git fetch --unshallow
+
 script:
+  - npm test -- --coverage --ci
   - npm run build
+  - ./scripts/update-sonar-version.sh && sonar-scanner
