@@ -4,6 +4,10 @@
     "eslint:recommended",
     "airbnb"
   ],
+  "env": {
+    "jest": true,
+    "es6": true
+  },
   "rules": {
     "react/jsx-filename-extension": [
       1,
@@ -15,6 +19,9 @@
       }
     ],
     "react/prop-types": 0,
+    "max-len": ["error", {
+      "comments": 120
+    }],
     "quotes": [2, "single", { "avoidEscape": true }],
     "no-underscore-dangle": 0,
     "import/imports-first": [

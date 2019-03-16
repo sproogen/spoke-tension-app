@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-const title = 'Spoke tension app'
+import App from './app'
 
 ReactDOM.render(
-  <div>{title}</div>,
+  <App />,
   document.getElementById('app'),
 )
 
