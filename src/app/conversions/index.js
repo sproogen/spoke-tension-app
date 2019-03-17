@@ -1,1 +1,5 @@
-export default from './xtools-conversion.config'
+import getTension from './get-tension'
+
+export {
+  getTension, // eslint-disable-line import/prefer-default-export
+}

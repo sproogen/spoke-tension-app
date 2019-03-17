@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  path, defaultTo, has, compose,
+  isNil, defaultTo,
 } from 'ramda'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import TextField from '@material-ui/core/TextField'
-import conversions from '../conversions'
+import { getTension } from '../conversions'
 
 class SpokeRow extends Component {
   static propTypes = {
@@ -19,47 +19,24 @@ class SpokeRow extends Component {
     updateReading: PropTypes.func.isRequired,
   }
 
-  state = {
-    error: false,
-  }
-
   handleChange = ({ target: { value } }) => {
     const { updateReading } = this.props
 
     updateReading(value)
-    this.setState({ error: !this.validate(value) })
-  }
-
-  validate = (value) => {
-    const { spoke: { toolId, spokeId } } = this.props
-
-    return compose(
-      has(value),
-      path([toolId, 'spokes', spokeId, 'readings'])
-    )(conversions)
-  }
-
-  getTension = () => {
-    const { spoke: { toolId, spokeId, reading } } = this.props
-
-    return compose(
-      defaultTo('-'),
-      path([toolId, 'spokes', spokeId, 'readings', reading])
-    )(conversions)
   }
 
   render() {
     const { spoke, averageTension } = this.props
-    const { reading, error } = this.state
+    const { toolId, spokeId, reading } = spoke
 
-    const tension = this.getTension()
-    const variance = tension === '-'
-      ? 100.00
-      : 100 - ((tension / averageTension) * 100)
+    const tension = getTension(toolId, spokeId, reading)
+    const variance = isNil(tension)
+      ? '-'
+      : parseFloat(((tension / averageTension) * 100) - 100).toFixed(0)
 
     return (
       <TableRow>
-        <TableCell>{spoke.number}</TableCell>
+        <TableCell>{spoke.number + 1}</TableCell>
         <TableCell>
           <TextField
             id={`spoke-reading-${spoke.number}`}
@@ -68,11 +45,11 @@ class SpokeRow extends Component {
             type="number"
             value={reading}
             onChange={this.handleChange}
-            error={error}
+            error={isNil(tension) && reading !== ''}
           />
         </TableCell>
-        <TableCell>{tension}</TableCell>
-        <TableCell>{parseFloat(variance).toFixed(2)}</TableCell>
+        <TableCell>{defaultTo('-', tension)}</TableCell>
+        <TableCell>{variance}</TableCell>
       </TableRow>
     )
   }
