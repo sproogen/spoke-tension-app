@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpokeRow render should match snapshot 1`] = `
+<WithStyles(Paper)>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          Spoke #
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Reading
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Tension (kgf)
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Variance (%)
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 0,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 1,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 2,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 3,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 4,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 5,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 6,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 7,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 8,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 9,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 10,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 11,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 12,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 13,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 14,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+      <SpokeRow
+        averageTension={100}
+        key="spoke-undefined"
+        spoke={
+          Object {
+            "number": 15,
+            "reading": "",
+            "spokeId": "spoke-1.8",
+            "toolId": "tool",
+          }
+        }
+        updateReading={[Function]}
+      />
+    </WithStyles(TableBody)>
+  </WithStyles(Table)>
+</WithStyles(Paper)>
+`;

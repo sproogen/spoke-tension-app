@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpokeRow render should match snapshot 1`] = `
+<WithStyles(TableRow)>
+  <WithStyles(TableCell)>
+    1
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    <TextField
+      error={false}
+      id="spoke-reading-0"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      value="40"
+      variant="outlined"
+    />
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    100
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    -9
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;
