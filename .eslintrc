@@ -20,6 +20,7 @@
     ],
     "react/prop-types": 0,
     "max-len": ["error", {
+      "code": 120,
       "comments": 120
     }],
     "quotes": [2, "single", { "avoidEscape": true }],
@@ -32,7 +33,14 @@
     "semi": [
       "error",
       "never"
-    ]
+    ],
+    "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+    }]
   },
   "globals": {
     "window": true,

@@ -5,6 +5,7 @@ module.exports = {
   ],
   plugins: [
     '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-class-properties',
   ],
   env: {
     test: {
@@ -14,6 +15,7 @@ module.exports = {
       ],
       plugins: [
         '@babel/plugin-proposal-export-default-from',
+        '@babel/plugin-proposal-class-properties',
       ],
     },
   },
