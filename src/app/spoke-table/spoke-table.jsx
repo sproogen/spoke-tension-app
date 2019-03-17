@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
-  update, path, reduce, add, prop, defaultTo,
+  update, reduce, add, defaultTo, dropLast,
 } from 'ramda'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -9,20 +10,34 @@ import TableBody from '@material-ui/core/TableBody'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import SpokeRow from './spoke-row'
-import conversions from '../conversions'
-
-const toolId = 'x-tools'
-const spokeId = 'round-1.8'
-
-const spokeType = { toolId, spokeId }
+import { getTension } from '../conversions'
 
 class SpokeTable extends Component {
+  propTypes = {
+    spokeCount: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+    toolId: PropTypes.string.isRequired,
+    spokeId: PropTypes.string.isRequired,
+  }
+
   state = {
-    spokes: [
-      { reading: '' },
-      { reading: '' },
-      { reading: '' },
-    ],
+    spokes: [],
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const { spokes: prevSpokes } = state
+    const { spokeCount } = props
+
+    if (prevSpokes.length < spokeCount) {
+      return {
+        spokes: [...prevSpokes, ...new Array(spokeCount - prevSpokes.length).fill({ reading: '' })],
+      }
+    }
+    if (prevSpokes.length > spokeCount) {
+      return {
+        spokes: dropLast(prevSpokes.length - spokeCount, prevSpokes),
+      }
+    }
+    return null
   }
 
   updateReading = index => value => (
@@ -31,23 +46,26 @@ class SpokeTable extends Component {
     }))
   )
 
-  getTensionForSpoke = spoke => path([toolId, 'spokes', spokeId, 'readings', prop('reading', spoke)])(conversions)
+  sumTensionForSpokes = (spokes) => {
+    const { toolId, spokeId } = this.props
 
-  getTensionForSpokes = spokes => (
-    reduce((acc, spoke) => add(acc, defaultTo(0, this.getTensionForSpoke(spoke))), 0, spokes)
-  )
+    return reduce((acc, spoke) => add(acc, defaultTo(0, getTension(toolId, spokeId, spoke.reading))), 0, spokes)
+  }
 
-  countSpokesWithReading = spokes => (
-    reduce((acc, spoke) => add(acc, this.getTensionForSpoke(spoke) ? 1 : 0), 0, spokes)
-  )
+  countSpokesWithReading = (spokes) => {
+    const { toolId, spokeId } = this.props
+
+    return reduce((acc, spoke) => add(acc, getTension(toolId, spokeId, spoke.reading) ? 1 : 0), 0, spokes)
+  }
 
   calculateAverageTension = () => {
     const { spokes } = this.state
 
-    return defaultTo(0, this.getTensionForSpokes(spokes) / this.countSpokesWithReading(spokes))
+    return defaultTo(0, this.sumTensionForSpokes(spokes) / this.countSpokesWithReading(spokes))
   }
 
   render() {
+    const { toolId, spokeId } = this.props
     const { spokes } = this.state
     const averageTension = this.calculateAverageTension()
 
@@ -65,8 +83,10 @@ class SpokeTable extends Component {
           <TableBody>
             {spokes.map((spoke, index) => (
               <SpokeRow
-                key={`spoke-${index}`}
-                spoke={{ ...spokeType, ...spoke, number: index }}
+                key={`spoke-${spoke.id}`}
+                spoke={{
+                  ...spoke, toolId, spokeId, number: index,
+                }}
                 averageTension={averageTension}
                 updateReading={this.updateReading(index)}
               />
