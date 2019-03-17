@@ -1,9 +1,10 @@
 import React from 'react'
+import SpokeTable from './spoke-table'
 
-const title = 'Spoke tension app'
+import './app.scss'
 
 const App = () => (
-  <div>{title}</div>
+  <SpokeTable />
 )
 
 export default App

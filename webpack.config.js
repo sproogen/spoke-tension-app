@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const src = path.resolve(__dirname, 'src')
@@ -24,7 +23,13 @@ module.exports = (env) => {
         },
         {
           test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+          use: ['style-loader', {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          }, 'sass-loader'],
         },
       ],
     },
@@ -50,7 +55,6 @@ module.exports = (env) => {
       new HtmlWebpackPlugin({
         template: path.resolve(publicSrc, 'index.html'),
       }),
-      new MiniCssExtractPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new BundleAnalyzerPlugin({
         analyzerMode: analyse ? 'server' : 'disabled',
