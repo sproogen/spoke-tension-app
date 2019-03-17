@@ -14,6 +14,8 @@ module.exports = {
     '<rootDir>/.storybook/',
     '<rootDir>/stories/',
     '<rootDir>/node_modules/',
+    '<rootDir>/src/index.js',
+    '**/*.config.js',
   ],
 
   // The directory where Jest should output its coverage files

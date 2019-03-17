@@ -14,6 +14,7 @@ class SpokeRow extends Component {
       toolId: PropTypes.string,
       spokeId: PropTypes.string,
       number: PropTypes.number,
+      reading: PropTypes.string,
     }).isRequired,
     averageTension: PropTypes.number.isRequired,
     updateReading: PropTypes.func.isRequired,
