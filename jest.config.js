@@ -49,6 +49,8 @@ module.exports = {
   // matched files will skip transformation
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
 
+  testResultsProcessor: 'jest-sonar-reporter',
+
   snapshotSerializers: ['enzyme-to-json/serializer'],
 
   // Indicates whether each individual test should be reported during the run

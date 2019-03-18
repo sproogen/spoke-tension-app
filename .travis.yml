@@ -23,6 +23,7 @@ before_install:
   - ./scripts/update-sonar-version.sh
 
 script:
+  - npm run lint -- -f json -o eslint-report.json
   - npm test -- --coverage --ci
   - npm run build
   - sonar-scanner
