@@ -8,3 +8,5 @@ logs
 npm-debug.log*
 
 coverage
+test-report.xml
+eslint-report.json
