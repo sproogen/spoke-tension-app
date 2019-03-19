@@ -26,3 +26,30 @@ exports[`SpokeRow render should match snapshot 1`] = `
   </WithStyles(TableCell)>
 </WithStyles(TableRow)>
 `;
+
+exports[`SpokeRow render with no tension should match snapshot 1`] = `
+<WithStyles(TableRow)>
+  <WithStyles(TableCell)>
+    1
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    <TextField
+      error={true}
+      id="spoke-reading-0"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      value="40"
+      variant="outlined"
+    />
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    -
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    -
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;

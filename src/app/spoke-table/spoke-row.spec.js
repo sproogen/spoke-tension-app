@@ -1,10 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { getTension } from '../conversions'
 import SpokeRow from './spoke-row'
 
 jest.mock('../conversions', () => ({
-  getTension: jest.fn(() => 100),
+  getTension: jest.fn(),
 }))
+getTension.mockImplementation(() => 100)
 
 const props = {
   spoke: {
@@ -18,6 +20,12 @@ const props = {
 }
 
 describe('SpokeRow', () => {
+  beforeEach(() => {
+    jest.mock('../conversions', () => ({
+      getTension: jest.fn(() => 100),
+    }))
+  })
+
   describe('actions', () => {
     describe('reading onChange', () => {
       it('should call update reading', () => {
@@ -38,6 +46,15 @@ describe('SpokeRow', () => {
     it('should match snapshot', () => {
       const wrapper = shallow(<SpokeRow {...props} />)
       expect(wrapper).toMatchSnapshot()
+    })
+
+    describe('with no tension', () => {
+      it('should match snapshot', () => {
+        getTension.mockImplementation(() => null)
+
+        const wrapper = shallow(<SpokeRow {...props} />)
+        expect(wrapper).toMatchSnapshot()
+      })
     })
   })
 })

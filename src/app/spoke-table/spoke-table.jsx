@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  update, reduce, add, defaultTo, dropLast,
+  adjust, reduce, add, defaultTo, dropLast, addIndex, map,
 } from 'ramda'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -11,6 +11,8 @@ import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import SpokeRow from './spoke-row'
 import { getTension } from '../conversions'
+
+const mapIndexed = addIndex(map)
 
 class SpokeTable extends Component {
   propTypes = {
@@ -29,7 +31,10 @@ class SpokeTable extends Component {
 
     if (prevSpokes.length < spokeCount) {
       return {
-        spokes: [...prevSpokes, ...new Array(spokeCount - prevSpokes.length).fill({ reading: '' })],
+        spokes: mapIndexed(
+          (value, index) => ({ ...value, id: index }),
+          [...prevSpokes, ...new Array(spokeCount - prevSpokes.length).fill({ reading: '' })]
+        ),
       }
     }
     if (prevSpokes.length > spokeCount) {
@@ -42,7 +47,7 @@ class SpokeTable extends Component {
 
   updateReading = index => value => (
     this.setState(({ spokes }) => ({
-      spokes: update(index, { reading: value }, spokes),
+      spokes: adjust(index, spoke => ({ ...spoke, reading: value }), spokes),
     }))
   )
 
@@ -83,6 +88,7 @@ class SpokeTable extends Component {
           <TableBody>
             {spokes.map((spoke, index) => (
               <SpokeRow
+                id={`spoke-${spoke.id}`}
                 key={`spoke-${spoke.id}`}
                 spoke={{
                   ...spoke, toolId, spokeId, number: index,

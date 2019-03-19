@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpokeRow render should match snapshot 1`] = `
+exports[`SpokeTable render should match snapshot 1`] = `
 <WithStyles(Paper)>
   <WithStyles(Table)>
     <WithStyles(TableHead)>
@@ -22,9 +22,11 @@ exports[`SpokeRow render should match snapshot 1`] = `
     <WithStyles(TableBody)>
       <SpokeRow
         averageTension={100}
-        key="spoke-undefined"
+        id="spoke-0"
+        key="spoke-0"
         spoke={
           Object {
+            "id": 0,
             "number": 0,
             "reading": "",
             "spokeId": "spoke-1.8",
@@ -35,9 +37,11 @@ exports[`SpokeRow render should match snapshot 1`] = `
       />
       <SpokeRow
         averageTension={100}
-        key="spoke-undefined"
+        id="spoke-1"
+        key="spoke-1"
         spoke={
           Object {
+            "id": 1,
             "number": 1,
             "reading": "",
             "spokeId": "spoke-1.8",
@@ -48,9 +52,11 @@ exports[`SpokeRow render should match snapshot 1`] = `
       />
       <SpokeRow
         averageTension={100}
-        key="spoke-undefined"
+        id="spoke-2"
+        key="spoke-2"
         spoke={
           Object {
+            "id": 2,
             "number": 2,
             "reading": "",
             "spokeId": "spoke-1.8",
@@ -59,12 +65,39 @@ exports[`SpokeRow render should match snapshot 1`] = `
         }
         updateReading={[Function]}
       />
+    </WithStyles(TableBody)>
+  </WithStyles(Table)>
+</WithStyles(Paper)>
+`;
+
+exports[`SpokeTable render with no tension should match snapshot 1`] = `
+<WithStyles(Paper)>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          Spoke #
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Reading
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Tension (kgf)
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Variance (%)
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
       <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
+        averageTension={0}
+        id="spoke-0"
+        key="spoke-0"
         spoke={
           Object {
-            "number": 3,
+            "id": 0,
+            "number": 0,
             "reading": "",
             "spokeId": "spoke-1.8",
             "toolId": "tool",
@@ -73,11 +106,13 @@ exports[`SpokeRow render should match snapshot 1`] = `
         updateReading={[Function]}
       />
       <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
+        averageTension={0}
+        id="spoke-1"
+        key="spoke-1"
         spoke={
           Object {
-            "number": 4,
+            "id": 1,
+            "number": 1,
             "reading": "",
             "spokeId": "spoke-1.8",
             "toolId": "tool",
@@ -86,141 +121,13 @@ exports[`SpokeRow render should match snapshot 1`] = `
         updateReading={[Function]}
       />
       <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
+        averageTension={0}
+        id="spoke-2"
+        key="spoke-2"
         spoke={
           Object {
-            "number": 5,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 6,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 7,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 8,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 9,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 10,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 11,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 12,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 13,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 14,
-            "reading": "",
-            "spokeId": "spoke-1.8",
-            "toolId": "tool",
-          }
-        }
-        updateReading={[Function]}
-      />
-      <SpokeRow
-        averageTension={100}
-        key="spoke-undefined"
-        spoke={
-          Object {
-            "number": 15,
+            "id": 2,
+            "number": 2,
             "reading": "",
             "spokeId": "spoke-1.8",
             "toolId": "tool",
